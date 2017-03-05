@@ -1,0 +1,14 @@
+{
+  "name": "Passport-Challenge",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "latest",
+    "cookie-parser": "latest",
+    "express": "latest",
+    "mongodb": "latest",
+    "mongoose": "latest"
+  },
+  "scripts": {
+    "start": "node server.js"
+  }
+}

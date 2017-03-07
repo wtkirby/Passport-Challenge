@@ -1,0 +1,11 @@
+.children-list{
+    list-style: none;
+}
+
+.child-element{
+    margin-bottom: 10px;
+}
+
+.glyphicon{
+    margin-right: 5px;
+}

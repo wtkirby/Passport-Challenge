@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="panel panel-default">
+      <div class="panel-heading clearfix">
+        <h2 class="panel-title pull-left">Root</h2>
+        <button class="btn btn-success btn-sm pull-right" (click)="clicked()">New Factory<span class="glyphicon glyphicon-plus"></span></button>
+      </div>
+      <div class="panel-body">
+        <ul class="factory-list">
+          <li *ngFor="let factory of factories">
+            <app-factory [factory]="factory" (factoryDeleted)="onDeleted($event)"></app-factory>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

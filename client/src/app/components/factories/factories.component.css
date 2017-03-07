@@ -1,0 +1,22 @@
+.factory-list {
+  list-style: none;
+  padding: 0px 10px;
+}
+
+.glyphicon-plus {
+  margin-left: 5px;
+}
+
+.panel-heading {
+  position: relative;
+}
+
+.panel-title {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.navbar {
+  border-radius: 0;
+}

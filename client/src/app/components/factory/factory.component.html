@@ -1,0 +1,14 @@
+<div class="panel panel-default">
+  <div class="panel-heading clearfix">
+    <h2 class="panel-title pull-left">{{factory.name}}</h2>
+    <span class="badge pull-right">{{factory.lowerBound}} : {{factory.upperBound}}</span>
+  </div>
+  <div class="panel-body" [hidden]="(factory.children.length == 0)">
+      <ul class="children-list">
+          <li class="child-element" *ngFor="let child of factory.children">
+            <span class="glyphicon glyphicon-chevron-right"></span>{{child}}
+          </li>
+      </ul>
+  </div>
+</div>
+

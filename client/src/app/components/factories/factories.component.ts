@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Response } from '@angular/http';
 import { Factory } from '../../classes/factory';
 import { FactoryService } from '../../services/factory.service';
+import { ModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'app-factories',
@@ -9,32 +10,73 @@ import { FactoryService } from '../../services/factory.service';
   styleUrls: ['./factories.component.css']
 })
 export class FactoriesComponent implements OnInit {
-  factories: Factory[] = [
-    { _id: "1", name:"Factory 1", upperBound: 15, lowerBound: 7, children: []},
-    { _id: "2", name:"Factory 2", upperBound: 500, lowerBound: 3, children: [123, 44, 67]},
-    { _id: "3", name:"Factory 3", upperBound: 500, lowerBound: 3, children: [123, 44, 67]},
-  ];
+  factories: Factory[];
+  newFactory: {
+    name: String;
+    lowerBound: String;
+    upperBound: String;
+  }
 
-  constructor(private factoryService: FactoryService) { }
+  @ViewChild(ModalComponent)
+  addFactoryModal: ModalComponent;
+
+  constructor(private factoryService: FactoryService) {
+    this.newFactory = {name: "", lowerBound: "", upperBound: ""};
+  }
 
   ngOnInit() {
-    // this.factoryService.getFactories()
-    //   .subscribe(
-    //     (factories: Factory[]) => {
-    //       this.factories = factories; 
-    //       console.log(factories);
-    //     },
-    //     (error: Response) => console.log(error)
-    //   );
+    this.factoryService.getFactories()
+      .subscribe(
+        (factories: Factory[]) => {
+          this.factories = factories; 
+        },
+        (error: Response) =>{ 
+          console.log(error);
+        }
+      );
+    
+    // Sort list after load
+    this.factories.sort((a,b)=>{
+      if(a._id >  b._id) return 1;
+      if(a._id <  b._id) return -1;
+      if(a._id == b._id) return 0;
+    });
   }
   
   onDeleted(factory: Factory) {
-    const position = this.factories.findIndex(
+    var position = this.factories.findIndex(
       (factoryAtIndex: Factory) => {
         return factoryAtIndex._id == factory._id;
       }
     );
     this.factories.splice(position, 1);
+  }
+
+  addFactory(){
+    this.newFactory = {name: "", lowerBound: "", upperBound: ""};
+    this.addFactoryModal.show();
+  }
+
+  createFactory(){
+    if(this.newFactory.lowerBound.valueOf() < this.newFactory.upperBound.valueOf()){
+      this.factoryService.addFactory(JSON.stringify(this.newFactory))
+        .subscribe(
+          (factory: Factory) => {
+            this.factories.push(factory) 
+          },
+          (error: Response) => {
+            console.log(error);
+          }
+        );
+    }
+
+    // Sort after adding new factory
+    this.factories.sort((a,b)=>{
+        if(a._id >  b._id) return 1;
+        if(a._id <  b._id) return -1;
+        if(a._id == b._id) return 0;
+      });
+    this.addFactoryModal.hide();
   }
 
 }

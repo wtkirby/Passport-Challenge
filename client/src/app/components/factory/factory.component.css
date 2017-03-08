@@ -5,7 +5,17 @@
 .child-element{
     margin-bottom: 10px;
 }
+.name-input{
+    padding: 3px 10px;
+    height: initial;
+}
 
-.glyphicon{
-    margin-right: 5px;
+.options{
+    font-size: 1.2em;
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+.input-group{
+    width: 30%;
 }

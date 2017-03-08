@@ -26,7 +26,7 @@ module.exports.addFactory = (req, res, next) => {
         if (err) {
             res.status('500').send('Could not add factory.');
         } else {
-            res.send('Factory added.');
+            res.json(factory);
         }
     });
 }
@@ -36,7 +36,7 @@ module.exports.updateFactory = (req, res, next) => {
         if (err) {
             res.status('500').send('Could not update factory');
         } else {
-            res.send('Factory updated.');
+            res.json(factory);
         }
     });
 }
@@ -46,7 +46,7 @@ module.exports.deleteFactory = (req, res, next) => {
         if (err) {
             res.status('500').send('Could not delete factory.');
         } else {
-            res.send('Factory deleted.')
+            res.json(factory);
         }
     })
 }
@@ -68,11 +68,11 @@ module.exports.generateChildren = (req, res, next) => {
                     newChildren.push(Math.floor(Math.random() * (upperBound - lowerBound + 1)) + lowerBound);
                 }
 
-                FactoryModel.addChildrenToFactory(req.params.id, newChildren, (err, factory) => {
+                FactoryModel.addChildrenToFactory(req.params.id, newChildren, (err, factoryWithChildren) => {
                     if (err) {
                         res.send('Could not generate children.');
                     } else {
-                        res.send('Children generated.');
+                        res.json(factoryWithChildren);  
                     }
                 });
 

@@ -34,7 +34,8 @@ module.exports.addFactory = (factory, callback) => {
 
 module.exports.updateFactory = (factoryId, newData, callback) => {
     Factory.findByIdAndUpdate(factoryId, newData, {
-        upsert: true
+        upsert: true,
+        new: true
     }, callback);
 }
 
@@ -46,6 +47,7 @@ module.exports.addChildrenToFactory = (factoryId, newChildren, callback) => {
     Factory.findByIdAndUpdate(factoryId, {
         children: newChildren
     }, {
-        upsert: true
+        upsert: true,
+        new: true
     }, callback);
 }

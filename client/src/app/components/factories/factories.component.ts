@@ -34,13 +34,6 @@ export class FactoriesComponent implements OnInit {
           console.log(error);
         }
       );
-    
-    // Sort list after load
-    this.factories.sort((a,b)=>{
-      if(a._id >  b._id) return 1;
-      if(a._id <  b._id) return -1;
-      if(a._id == b._id) return 0;
-    });
   }
   
   onDeleted(factory: Factory) {
@@ -69,13 +62,6 @@ export class FactoriesComponent implements OnInit {
           }
         );
     }
-
-    // Sort after adding new factory
-    this.factories.sort((a,b)=>{
-        if(a._id >  b._id) return 1;
-        if(a._id <  b._id) return -1;
-        if(a._id == b._id) return 0;
-      });
     this.addFactoryModal.hide();
   }
 

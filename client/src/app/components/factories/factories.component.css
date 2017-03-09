@@ -7,6 +7,10 @@
   margin-left: 5px;
 }
 
+.root-panel{
+  padding: 15px 0px;
+}
+
 .panel-heading {
   position: relative;
 }

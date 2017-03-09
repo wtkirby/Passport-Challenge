@@ -66,6 +66,7 @@ export class FactoryComponent implements OnInit {
           .subscribe(
               (updatedFactory: Factory) => {
               this.factory = updatedFactory;
+              this.tempFactory = Object.assign({}, this.factory);
             },
             (error: Response) => {
               console.log(error);
@@ -74,8 +75,8 @@ export class FactoryComponent implements OnInit {
     }
     else{
       this.flashMessagesService.show('Sorry, that name is too short.', { cssClass: 'alert-danger', timeout: 3000 });
-      this.tempFactory = Object.assign({}, this.factory);
     }
+    this.tempFactory = Object.assign({}, this.factory);
 
   }
 
@@ -88,6 +89,7 @@ export class FactoryComponent implements OnInit {
           .subscribe(
               (updatedFactory: Factory) => {
               this.factory = updatedFactory;
+              this.tempFactory = Object.assign({}, this.factory); 
             },
             (error: Response) => {
               console.log(error);
@@ -96,8 +98,8 @@ export class FactoryComponent implements OnInit {
     }
     else{
       this.flashMessagesService.show('Sorry, the lower bound must be strictly less than upper bound.', { cssClass: 'alert-danger', timeout: 3000 });
-      this.tempFactory = Object.assign({}, this.factory); 
     }
+    this.tempFactory = Object.assign({}, this.factory); 
 
   }
 

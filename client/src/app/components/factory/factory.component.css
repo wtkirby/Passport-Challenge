@@ -5,6 +5,7 @@
 .name-input{
     padding: 3px 10px;
     height: initial;
+    width: 100px;
 }
 
 .options{

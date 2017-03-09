@@ -9,7 +9,8 @@
       <div *ngIf="this.factories.length > 0" class="panel-body">
         <ul class="factory-list">
           <li *ngFor="let factory of factories">
-            <app-factory [factory]="factory" (factoryDeleted)="onDeleted($event)"></app-factory>
+            <span class="glyphicon glyphicon-chevron-right pointer"></span>
+            <app-factory class="factory" [factory]="factory" (factoryDeleted)="onDeleted($event)"></app-factory>
           </li>
         </ul>
       </div>

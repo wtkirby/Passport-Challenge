@@ -1,4 +1,4 @@
-<div class="panel panel-default">
+<div class="panel panel-default factory-panel">
   <div class="panel-heading clearfix">
     <div class="pull-left">
       <h1 class="panel-title" *ngIf="!editingName" (click)="nameClicked()">{{factory.name}}</h1>
@@ -18,12 +18,12 @@
         <button class="btn btn-primary" type="button" (click)="generateChildren()">Generate</button>
       </span>
       </div>
-    <button type="button" class="btn btn-sm btn-danger pull-right" (click)="deleteFactory()">Delete</button>
+    <button type="button" class="btn btn-sm btn-danger pull-right" (click)="deleteFactory()"><span class="glyphicon glyphicon-trash"></span></button>
   </div>
   <div class="panel-body" [hidden]="(factory.children.length == 0)">
     <ul class="children-list">
-      <li class="child-element" *ngFor="let child of factory.children">
-        <span class="glyphicon glyphicon-chevron-right"></span>{{child}}
+      <li *ngFor="let child of factory.children">
+        <span class="glyphicon glyphicon-chevron-right child-pointer"></span>{{child}}
       </li>
     </ul>
   </div>

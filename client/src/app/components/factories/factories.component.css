@@ -20,3 +20,8 @@
 .navbar {
   border-radius: 0;
 }
+
+.pointer{
+  float: left;
+  margin-top: 12px;
+}

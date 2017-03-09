@@ -2,9 +2,6 @@
     list-style: none;
 }
 
-.child-element{
-    margin-bottom: 5px;
-}
 .name-input{
     padding: 3px 10px;
     height: initial;
@@ -17,5 +14,14 @@
 }
 
 .input-group{
-    width: 140px;
+    width: 150px;
+}
+
+.factory-panel{
+    margin-left: 20px;
+}
+
+.child-pointer{
+    margin-bottom: 7px;
+    margin-right: 3px;
 }

@@ -2,7 +2,7 @@
   <div class="panel-heading clearfix">
     <div class="pull-left">
       <h1 class="panel-title" *ngIf="!editingName" (click)="nameClicked()">{{factory.name}}</h1>
-      <input class="form-control name-input" type="text" [(ngModel)]="tempFactory.name" *ngIf="editingName" appFocus (keyup.enter)="updateName()" (blur)="updateName()"
+      <input class="form-control name-input" type="text" [(ngModel)]="tempFactory.name" *ngIf="editingName" appFocus (keyup.enter)="updateName()" (blur)="cancelUpdateName()"
         (click)="selectContent($event)">
     </div>
     <div class="pull-right">
@@ -15,7 +15,7 @@
       <div class="input-group input-group-sm pull-left">
         <input type="text" class="form-control" placeholder="Amount" [(ngModel)]="amountToGenerate">
         <span class="input-group-btn">
-        <button class="btn btn-default" type="button" (click)="generateChildren()">Generate</button>
+        <button class="btn btn-primary" type="button" (click)="generateChildren()">Generate</button>
       </span>
       </div>
     <button type="button" class="btn btn-sm btn-danger pull-right" (click)="deleteFactory()">Delete</button>

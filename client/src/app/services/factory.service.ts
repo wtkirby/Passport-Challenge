@@ -9,15 +9,18 @@ export class FactoryService {
   constructor(private http: Http) { }
 
   getFactories(): Observable<any> {
+
     return this.http.get('/api/factory')
       .map(
         (response: Response) => {
           return response.json();
         }
       );
+      
   }
     
   addFactory(factory: String): Observable<any> {
+
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
@@ -27,9 +30,11 @@ export class FactoryService {
           return response.json();
         }
       );
+
   }
 
   updateFactory(factoryId: String, newData: String): Observable<any> {
+
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
@@ -39,18 +44,22 @@ export class FactoryService {
           return response.json();
         }
       );
+
   }
 
   deleteFactory(factoryId: String): Observable<any> {
+
     return this.http.delete('/api/factory/' + factoryId)
       .map(
         (response: Response) => {
           return response.json();
         }
       );
-  }
 
-    generateChildren(factoryId: String, amountToGenerate: Number): Observable<any> {
+  }
+  
+  generateChildren(factoryId: String, amountToGenerate: Number): Observable<any> {
+
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
@@ -60,6 +69,7 @@ export class FactoryService {
           return response.json();
         }
       );
+
   }
 
 }

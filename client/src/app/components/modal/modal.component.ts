@@ -5,7 +5,9 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.css']
 })
+
 export class ModalComponent implements OnInit {
+  
   public visible = false;
   private visibleAnimate = false;  
 
@@ -15,13 +17,17 @@ export class ModalComponent implements OnInit {
   }
 
   public show(): void {
+
     this.visible = true;
     setTimeout(() => this.visibleAnimate = true);
+
   }
 
   public hide(): void {
+
     this.visibleAnimate = false;
     setTimeout(() => this.visible = false, 300);
+
   }
 
 }

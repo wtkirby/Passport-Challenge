@@ -20,7 +20,7 @@ var factorySchema = new Schema({
 var Factory = mongoose.model('Factory', factorySchema);
 
 module.exports.getFactories = (callback) => {
-    Factory.find({}, callback);
+    Factory.find({}).sort({'_id': 1}).exec(callback);
 }
 
 module.exports.getFactoryById = (factoryId, callback) => {

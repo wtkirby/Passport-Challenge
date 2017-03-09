@@ -8,3 +8,5 @@ Database: MongoDB (Hosted on [mLab](https://mlab.com/))
 Server: Node.js server running Express.js based web server (Hosted on [Heroku](https://www.heroku.com/))
 
 Front-End: [Angular 2](https://angular.io/)
+
+[Live Demo](https://wtkchallenge.herokuapp.com/)

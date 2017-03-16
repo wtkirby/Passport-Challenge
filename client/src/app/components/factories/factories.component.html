@@ -3,13 +3,12 @@
     <flash-messages></flash-messages>
     <div class="panel panel-default">
       <div class="panel-heading clearfix">
-        <h2 class="panel-title pull-left">Root</h2>
+        <h2 class="panel-title pull-left">Factory List</h2>
         <button class="btn btn-success btn-sm pull-right" (click)="addFactory()">New Factory<span class="glyphicon glyphicon-plus"></span></button>
       </div>
       <div *ngIf="this.factories.length > 0" class="panel-body root-panel-body">
         <ul class="factory-list">
           <li *ngFor="let factory of factories">
-            <span class="glyphicon glyphicon-chevron-right pointer"></span>
             <app-factory class="factory" [factory]="factory" (factoryDeleted)="onDeleted($event)"></app-factory>
           </li>
         </ul>

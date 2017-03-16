@@ -62,7 +62,18 @@ export class FactoriesComponent implements OnInit {
 
   createFactory(){
 
-    if(this.newFactory.lowerBound.valueOf() < this.newFactory.upperBound.valueOf() && this.newFactory.name.length > 0){
+    this.addFactoryModal.hide();
+
+    if(+this.newFactory.lowerBound >= +this.newFactory.upperBound){
+      this.flashMessagesService.show('Sorry, the lower bound must be strictly less than upper bound.', { cssClass: 'alert-danger', timeout: 3000 });
+    }
+    else if(!Number.isInteger(+this.newFactory.lowerBound + +this.newFactory.upperBound)){
+      this.flashMessagesService.show('Sorry, the bounds must be integers.', { cssClass: 'alert-danger', timeout: 3000 });
+    }
+    else if (this.newFactory.name.length < 1){
+      this.flashMessagesService.show('Sorry, that name is too short.', { cssClass: 'alert-danger', timeout: 3000 });
+    }
+    else {
       this.factoryService.addFactory(JSON.stringify(this.newFactory))
         .subscribe(
           (factory: Factory) => {
@@ -74,14 +85,7 @@ export class FactoriesComponent implements OnInit {
           }
         );
     }
-    else if(this.newFactory.lowerBound.valueOf() >= this.newFactory.upperBound.valueOf()){
-      this.flashMessagesService.show('Sorry, the lower bound must be strictly less than upper bound.', { cssClass: 'alert-danger', timeout: 3000 });
-    }
-    else{
-      this.flashMessagesService.show('Sorry, that name is too short.', { cssClass: 'alert-danger', timeout: 3000 });
-    }
-    
-    this.addFactoryModal.hide();
+
   }
 
 }

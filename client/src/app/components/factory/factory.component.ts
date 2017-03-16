@@ -62,7 +62,7 @@ export class FactoryComponent implements OnInit {
 
     this.editingName = false;
     if(this.tempFactory.name.length > 0){
-      this.factoryService.updateFactory(this.factory._id, JSON.stringify({ "name": this.tempFactory.name }))
+      this.factoryService.updateFactory(this.factory._id, JSON.stringify(this.tempFactory))
           .subscribe(
               (updatedFactory: Factory) => {
               this.factory = updatedFactory;
@@ -84,8 +84,15 @@ export class FactoryComponent implements OnInit {
 
     this.editingBounds = false;
     this.modal.hide();
-    if(this.tempFactory.lowerBound < this.tempFactory.upperBound){
-      this.factoryService.updateFactory(this.factory._id, JSON.stringify({ "lowerBound": this.tempFactory.lowerBound, "upperBound": this.tempFactory.upperBound }))
+
+    if(this.tempFactory.lowerBound >= this.tempFactory.upperBound){
+      this.flashMessagesService.show('Sorry, the lower bound must be strictly less than upper bound.', { cssClass: 'alert-danger', timeout: 3000 });
+    }
+    else if(!Number.isInteger(+this.tempFactory.lowerBound + +this.tempFactory.upperBound)){
+      this.flashMessagesService.show('Sorry, the bounds must be integers.', { cssClass: 'alert-danger', timeout: 3000 });
+    }
+    else{
+      this.factoryService.updateFactory(this.factory._id, JSON.stringify(this.tempFactory))
           .subscribe(
               (updatedFactory: Factory) => {
               this.factory = updatedFactory;
@@ -95,9 +102,6 @@ export class FactoryComponent implements OnInit {
               console.log(error);
             }
           );
-    }
-    else{
-      this.flashMessagesService.show('Sorry, the lower bound must be strictly less than upper bound.', { cssClass: 'alert-danger', timeout: 3000 });
     }
     this.tempFactory = Object.assign({}, this.factory); 
 

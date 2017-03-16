@@ -8,6 +8,6 @@ import { Component } from '@angular/core';
 
 export class AppComponent {
 
-  title = 'Passport Challenge';
+  title = 'Random Number Generator';
   
 }

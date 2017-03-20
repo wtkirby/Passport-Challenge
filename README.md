@@ -1,4 +1,4 @@
-# Passport-Challenge
+# Sample-App
 Challenge to create a full stack project based around factories which can be created, edited, and deleted.
 
 Each factory can have up to 15 children which are random numbers between the factory's upper and lower bound.
@@ -9,4 +9,4 @@ Server: Node.js server running Express.js based web server (Hosted on [Heroku](h
 
 Front-End: [Angular 2](https://angular.io/)
 
-[Live Demo](https://wtkchallenge.herokuapp.com/)
+[Live Demo](https://wtksampleapp.herokuapp.com/)

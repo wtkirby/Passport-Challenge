@@ -1,5 +1,5 @@
 {
-  "name": "passport-challenge",
+  "name": "sample-app",
   "main": "server.js",
   "angular-cli": {},
   "engines": {
